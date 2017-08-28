@@ -12,14 +12,12 @@ use Exception as RootException;
  */
 class InvalidArgumentException extends RootInvalidArgumentException implements InvalidArgumentExceptionInterface
 {
-    /**
-     * The argument associated with this instance.
+    /*
+     * Adds argument awareness.
      *
      * @since [*next-version*]
-     *
-     * @var mixed
      */
-    protected $argument;
+    use ArgumentAwareTrait;
 
     public function __construct($message = '', $code = 0, RootException $previous = null, $argument = null)
     {
@@ -46,31 +44,5 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
     public function getArgument()
     {
         return $this->_getArgument();
-    }
-
-    /**
-     * Retrieves the argument.
-     *
-     * @since [*next-version*]
-     *
-     * @return mixed The argument
-     */
-    protected function _getArgument()
-    {
-        return $this->argument;
-    }
-
-    /**
-     * Assigns the argument.
-     *
-     * @since [*next-version*]
-     *
-     * @return $this
-     */
-    protected function _setArgument($argument)
-    {
-        $this->argument = $argument;
-
-        return $this;
     }
 }
