@@ -26,7 +26,7 @@ class ExceptionTest extends TestCase
      *
      * @return \Dhii\Exception\Exception
      */
-    public function createInstance($message = '', $code = 0, $previous = null)
+    public function createInstance($message = null, $code = null, $previous = null)
     {
         $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
                 ->new($message, $code, $previous);
