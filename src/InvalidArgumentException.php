@@ -32,6 +32,8 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
     {
         parent::__construct((string) $message, (int) $code, $previous);
         $this->_setArgument($argument);
+
+        $this->_construct();
     }
 
     /**
