@@ -4,9 +4,10 @@ namespace Dhii\Exception\FuncTest;
 
 use Xpmock\TestCase;
 use Exception as RootException;
+use Dhii\Exception\InvalidArgumentException as TestSubject;
 
 /**
- * Tests {@see \Dhii\Exception\Exception}.
+ * Tests {@see TestSubject}.
  *
  * @since [*next-version*]
  */
@@ -17,14 +18,14 @@ class InvalidArgumentExceptionTest extends TestCase
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\\Exception\\InvalidArgumentException';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\InvalidArgumentException';
 
     /**
      * Creates a new instance of the test subject.
      *
      * @since [*next-version*]
      *
-     * @return \Dhii\Exception\Exception
+     * @return TestSubject
      */
     public function createInstance($message = null, $code = null, $previous = null, $argument = null)
     {
@@ -81,7 +82,7 @@ class InvalidArgumentExceptionTest extends TestCase
             throw $subject;
         } catch (RootException $e) {
             $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created');
-            $this->assertInstanceOf('Dhii\\Exception\\InvalidArgumentExceptionInterface', $subject, 'Subject is not a valid Dhii throwable');
+            $this->assertInstanceOf('Dhii\Exception\InvalidArgumentExceptionInterface', $subject, 'Subject is not a valid Dhii throwable');
             $this->assertEquals($message, $e->getMessage(), 'Subject message is wrong');
             $this->assertEquals($code, $e->getCode(), 'Subject code is wrong');
             $this->assertEquals($previous, $e->getPrevious(), 'Subject inner exception is wrong');
