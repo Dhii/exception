@@ -22,5 +22,17 @@ class Exception extends RootException implements ThrowableInterface
     public function __construct($message = null, $code = null, RootException $previous = null)
     {
         parent::__construct((string) $message, (int) $code, $previous);
+        $this->_construct();
+    }
+
+    /**
+     * Parameter-less constructor.
+     *
+     * Invoke this in actual constructor.
+     *
+     * @since [*next-version*]
+     */
+    protected function _construct()
+    {
     }
 }
