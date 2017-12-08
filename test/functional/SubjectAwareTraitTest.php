@@ -3,21 +3,21 @@
 namespace Dhii\Exception\FuncTest;
 
 use Xpmock\TestCase;
-use Dhii\Exception\ArgumentAwareTrait as TestSubject;
+use Dhii\Exception\SubjectAwareTrait as TestSubject;
 
 /**
  * Tests {@see TestSubject}.
  *
  * @since [*next-version*]
  */
-class ArgumentAwareTraitTest extends TestCase
+class SubjectAwareTraitTest extends TestCase
 {
     /**
      * The name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\ArgumentAwareTrait';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\SubjectAwareTrait';
 
     /**
      * Creates a new instance of the test subject.
@@ -46,20 +46,19 @@ class ArgumentAwareTraitTest extends TestCase
     }
 
     /**
-     * Tests that the exception params can be correctly set in the constructor,
-     * and can be correctly retrieved.
+     * Tests that the exception subject can be correctly set and retrieved.
      *
      * @since [*next-version*]
      */
-    public function testSetGetArgument()
+    public function testSetGetSubject()
     {
         $subject = $this->createInstance();
         $_subject = $this->reflect($subject);
         $data = uniqid('argument-');
 
-        $_subject->_setArgument($data);
-        $result = $_subject->_getArgument($data);
+        $_subject->_setSubject($data);
+        $result = $_subject->_getSubject($data);
 
-        $this->assertEquals($data, $result, 'Argument retrieved is not the same as argument assigned');
+        $this->assertEquals($data, $result, 'Exception subject retrieved is not the same as argument assigned');
     }
 }
