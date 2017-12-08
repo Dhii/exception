@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aab764ca1eea62d30e45a38141c3f821",
+    "content-hash": "47d4e7f3a8fc3d47abddd1e8b796f38a",
     "packages": [
         {
             "name": "dhii/exception-interface",
-            "version": "dev-release/0.1",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/exception-interface.git",
-                "reference": "265a5fc902bdbeefb0973bf367e2c730da2b8854"
+                "reference": "606a206662047f6f33c6d45ad79dfef37175cf2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/exception-interface/zipball/265a5fc902bdbeefb0973bf367e2c730da2b8854",
-                "reference": "265a5fc902bdbeefb0973bf367e2c730da2b8854",
+                "url": "https://api.github.com/repos/Dhii/exception-interface/zipball/606a206662047f6f33c6d45ad79dfef37175cf2d",
+                "reference": "606a206662047f6f33c6d45ad79dfef37175cf2d",
                 "shasum": ""
             },
             "require": {
@@ -31,6 +31,11 @@
                 "ptrofimov/xpmock": "^1.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Dhii\\Exception\\": "src"
@@ -47,7 +52,7 @@
                 }
             ],
             "description": "Interfaces for most common exceptions",
-            "time": "2017-08-22 09:48:15"
+            "time": "2017-12-08 09:40:26"
         },
         {
             "name": "dhii/stringable-interface",
@@ -2105,13 +2110,11 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "dhii/exception-interface": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^5.3 | ^7.0"
+        "php": "^5.4 | ^7.0"
     },
     "platform-dev": []
 }
