@@ -18,7 +18,7 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
      *
      * @since [*next-version*]
      */
-    use ArgumentAwareTrait;
+    use SubjectAwareTrait;
 
     /**
      * @since [*next-version*]
@@ -31,7 +31,7 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
     public function __construct($message = null, $code = null, RootException $previous = null, $argument = null)
     {
         parent::__construct((string) $message, (int) $code, $previous);
-        $this->_setArgument($argument);
+        $this->_setSubject($argument);
 
         $this->_construct();
     }
@@ -52,8 +52,8 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
      *
      * @since [*next-version*]
      */
-    public function getArgument()
+    public function getSubject()
     {
-        return $this->_getArgument();
+        return $this->_getSubject();
     }
 }

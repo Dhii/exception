@@ -90,7 +90,7 @@ class InvalidArgumentExceptionTest extends TestCase
             $this->assertInternalType('int', $e->getLine(), 'Subject string trace is wrong');
             $this->assertInternalType('string', $e->getTraceAsString(), 'Subject string trace is wrong');
             $this->assertInternalType('array', $e->getTrace(), 'Subject trace is wrong');
-            $this->assertEquals($argument, $e->getArgument(), 'Subject argument is wrong');
+            $this->assertEquals($argument, $e->getSubject(), 'Subject argument is wrong');
         }
     }
 }
