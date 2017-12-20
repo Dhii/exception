@@ -52,20 +52,6 @@ class OutOfRangeExceptionTest extends TestCase
     }
 
     /**
-     * Tests whether a valid instance of the test subject can be created.
-     *
-     * @since [*next-version*]
-     */
-    public function testCanBeCreated()
-    {
-        $subject = $this->createInstance();
-
-        $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'Subject is not a valid instance.');
-        $this->assertInstanceOf('OutOfRangeException', $subject, 'Subject is not a valid out of range exception.');
-        $this->assertInstanceOf('Dhii\Exception\BadSubjectExceptionInterface', $subject, 'Subject does not implement required interface.');
-    }
-
-    /**
      * Tests that the exception params can be correctly set in the constructor,
      * and can be correctly retrieved.
      *

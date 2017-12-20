@@ -82,9 +82,10 @@ class OutOfRangeExceptionTest extends TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'Subject is not a valid instance.');
+        $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created.');
         $this->assertInstanceOf('OutOfRangeException', $subject, 'Subject is not a valid out of range exception.');
         $this->assertInstanceOf('Dhii\Exception\BadSubjectExceptionInterface', $subject, 'Subject does not implement required interface.');
+        $this->assertInstanceOf('Dhii\Exception\ThrowableInterface', $subject, 'Subject is not a valid Dhii throwable');
     }
 
     /**
