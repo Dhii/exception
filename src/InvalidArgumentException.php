@@ -2,6 +2,9 @@
 
 namespace Dhii\Exception;
 
+use Dhii\I18n\StringTranslatingTrait;
+use Dhii\Util\Normalization\NormalizeIntCapableTrait;
+use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 use InvalidArgumentException as RootInvalidArgumentException;
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
@@ -19,6 +22,33 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
      * @since [*next-version*]
      */
     use SubjectAwareTrait;
+    /*
+     * Adds ability to normalize strings.
+     *
+     * @since [*next-version*]
+     */
+    use NormalizeStringCapableTrait;
+
+    /*
+     * Adds ability to normalize integers.
+     *
+     * @since [*next-version*]
+     */
+    use NormalizeIntCapableTrait;
+
+    /*
+     * Adds ability to translate strings.
+     *
+     * @since [*next-version*]
+     */
+    use StringTranslatingTrait;
+
+    /*
+     * Adds an invalid argument exception factory.
+     *
+     * @since [*next-version*]
+     */
+    use CreateNativeInvalidArgumentExceptionCapableTrait;
 
     /**
      * @since [*next-version*]
@@ -30,7 +60,14 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
      */
     public function __construct($message = null, $code = null, RootException $previous = null, $argument = null)
     {
-        parent::__construct((string) $message, (int) $code, $previous);
+        $message = is_null($message)
+            ? ''
+            : $this->_normalizeString($message);
+        $code = is_null($code)
+            ? 0
+            : $this->_normalizeInt($code);
+
+        parent::__construct($message, $code, $previous);
         $this->_setSubject($argument);
 
         $this->_construct();

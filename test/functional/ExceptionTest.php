@@ -52,18 +52,6 @@ class ExceptionTest extends TestCase
     }
 
     /**
-     * Tests whether a valid instance of the test subject can be created.
-     *
-     * @since [*next-version*]
-     */
-    public function testCanBeCreated()
-    {
-        $subject = $this->createInstance();
-
-        $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'Subject is not a valid instance.');
-    }
-
-    /**
      * Tests that the exception params can be correctly set in the constructor,
      * and can be correctly retrieved.
      *
@@ -76,12 +64,9 @@ class ExceptionTest extends TestCase
         $previous = $this->createException(uniqid('inner-message-'), rand(1, 100));
         $subject = $this->createInstance($message, $code, $previous);
 
-        $this->assertInstanceOf('Exception', $subject, 'Subject is not a valid exception');
         try {
             throw $subject;
         } catch (RootException $e) {
-            $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created');
-            $this->assertInstanceOf('Dhii\Exception\ThrowableInterface', $subject, 'Subject is not a valid Dhii throwable');
             $this->assertEquals($message, $e->getMessage(), 'Subject message is wrong');
             $this->assertEquals($code, $e->getCode(), 'Subject code is wrong');
             $this->assertEquals($previous, $e->getPrevious(), 'Subject inner exception is wrong');

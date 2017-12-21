@@ -2,19 +2,22 @@
 
 namespace Dhii\Exception;
 
+use Dhii\I18n\StringTranslatingTrait;
+use Dhii\Util\Normalization\NormalizeIntCapableTrait;
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
+use OutOfRangeException as BaseOutOfRangeException;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
-use Dhii\Util\Normalization\NormalizeIntCapableTrait;
-use Dhii\I18n\StringTranslatingTrait;
 
-/**
- * The most basic exception.
- *
- * @since [*next-version*]
- */
-class Exception extends RootException implements ThrowableInterface
+class OutOfRangeException extends BaseOutOfRangeException implements BadSubjectExceptionInterface
 {
+    /*
+     * Adds argument awareness.
+     *
+     * @since [*next-version*]
+     */
+    use SubjectAwareTrait;
+
     /*
      * Adds ability to normalize strings.
      *
@@ -49,8 +52,9 @@ class Exception extends RootException implements ThrowableInterface
      * @param string|Stringable|null $message  The message, if any.
      * @param int|null               $code     The error code, if any.
      * @param RootException|null     $previous The inner exception, if any.
+     * @param mixed|null             $argument The argument value, if any.
      */
-    public function __construct($message = null, $code = null, RootException $previous = null)
+    public function __construct($message = null, $code = null, RootException $previous = null, $argument = null)
     {
         $message = is_null($message)
             ? ''
@@ -60,6 +64,8 @@ class Exception extends RootException implements ThrowableInterface
             : $this->_normalizeInt($code);
 
         parent::__construct($message, $code, $previous);
+        $this->_setSubject($argument);
+
         $this->_construct();
     }
 
@@ -72,5 +78,15 @@ class Exception extends RootException implements ThrowableInterface
      */
     protected function _construct()
     {
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function getSubject()
+    {
+        return $this->_getSubject();
     }
 }

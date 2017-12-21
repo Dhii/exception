@@ -11,14 +11,14 @@ use Dhii\Exception\InvalidArgumentException as TestSubject;
  *
  * @since [*next-version*]
  */
-class InvalidArgumentExceptionTest extends TestCase
+class OutOfRangeExceptionTest extends TestCase
 {
     /**
      * The name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\InvalidArgumentException';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\OutOfRangeException';
 
     /**
      * Creates a new instance of the test subject.
@@ -65,6 +65,7 @@ class InvalidArgumentExceptionTest extends TestCase
         $argument = uniqid('argument-');
         $subject = $this->createInstance($message, $code, $previous, $argument);
 
+        $this->assertInstanceOf('Exception', $subject, 'Subject is not a valid exception');
         try {
             throw $subject;
         } catch (RootException $e) {
