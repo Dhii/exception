@@ -17,7 +17,7 @@ trait CreateInvalidArgumentExceptionCapableTrait
      * @param RootException|null $previous The inner exception for chaining, if any.
      * @param mixed|null         $argument The invalid argument, if any.
      *
-     * @return InvalidArgumentException The new exception.
+     * @return RootInvalidArgumentException The new exception.
      */
     protected function _createInvalidArgumentException(
         $message = '',
