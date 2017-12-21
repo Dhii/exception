@@ -6,7 +6,6 @@ use Dhii\I18n\StringTranslatingTrait;
 use Dhii\Util\Normalization\NormalizeIntCapableTrait;
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
-use InvalidArgumentException as RootInvalidArgumentException;
 use OutOfRangeException as BaseOutOfRangeException;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 
@@ -39,6 +38,13 @@ class OutOfRangeException extends BaseOutOfRangeException implements BadSubjectE
      * @since [*next-version*]
      */
     use StringTranslatingTrait;
+
+    /*
+     * Adds an invalid argument exception factory.
+     *
+     * @since [*next-version*]
+     */
+    use CreateInvalidArgumentExceptionCapableTrait;
 
     /**
      * @since [*next-version*]
@@ -82,26 +88,5 @@ class OutOfRangeException extends BaseOutOfRangeException implements BadSubjectE
     public function getSubject()
     {
         return $this->_getSubject();
-    }
-
-    /**
-     * Creates a new invalid argument exception.
-     *
-     * @since [*next-version*]
-     *
-     * @param string|Stringable|null $message  The error message, if any.
-     * @param int|null               $code     The error code, if any.
-     * @param RootException|null     $previous The inner exception for chaining, if any.
-     * @param mixed|null             $argument The invalid argument, if any.
-     *
-     * @return InvalidArgumentException The new exception.
-     */
-    protected function _createInvalidArgumentException(
-        $message = null,
-        $code = null,
-        RootException $previous = null,
-        $argument = null
-    ) {
-        return new RootInvalidArgumentException($message, $code, $previous);
     }
 }
