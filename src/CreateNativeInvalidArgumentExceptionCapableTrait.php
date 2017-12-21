@@ -5,7 +5,7 @@ namespace Dhii\Exception;
 use Exception as RootException;
 use InvalidArgumentException as RootInvalidArgumentException;
 
-trait CreateInvalidArgumentExceptionCapableTrait
+trait CreateNativeInvalidArgumentExceptionCapableTrait
 {
     /**
      * Creates a new invalid argument exception.

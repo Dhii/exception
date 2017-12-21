@@ -44,7 +44,7 @@ class OutOfRangeException extends BaseOutOfRangeException implements BadSubjectE
      *
      * @since [*next-version*]
      */
-    use CreateInvalidArgumentExceptionCapableTrait;
+    use CreateNativeInvalidArgumentExceptionCapableTrait;
 
     /**
      * @since [*next-version*]

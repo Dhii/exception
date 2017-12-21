@@ -48,7 +48,7 @@ class InvalidArgumentException extends RootInvalidArgumentException implements I
      *
      * @since [*next-version*]
      */
-    use CreateInvalidArgumentExceptionCapableTrait;
+    use CreateNativeInvalidArgumentExceptionCapableTrait;
 
     /**
      * @since [*next-version*]

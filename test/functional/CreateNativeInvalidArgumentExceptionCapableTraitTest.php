@@ -12,14 +12,14 @@ use PHPUnit_Framework_MockObject_MockObject as MockObject;
  *
  * @since [*next-version*]
  */
-class CreateInvalidArgumentExceptionCapableTraitTest extends TestCase
+class CreateNativeInvalidArgumentExceptionCapableTraitTest extends TestCase
 {
     /**
      * The name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\CreateInvalidArgumentExceptionCapableTrait';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\CreateNativeInvalidArgumentExceptionCapableTrait';
 
     /**
      * Creates a new instance of the test subject.
