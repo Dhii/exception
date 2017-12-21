@@ -105,6 +105,7 @@ class OutOfRangeExceptionTest extends TestCase
         $message = uniqid('message-');
         $code = rand(1, 99);
         $value = uniqid('out-of-range-value-');
+        $previous = $this->createException(uniqid('previous-message'));
 
         $subject->expects($this->exactly(1))
             ->method('_construct');
@@ -118,7 +119,7 @@ class OutOfRangeExceptionTest extends TestCase
             ->method('_setSubject')
             ->with($value);
 
-        $subject->__construct($message, $code, null, $value);
+        $subject->__construct($message, $code, $previous, $value);
     }
 
     /**
