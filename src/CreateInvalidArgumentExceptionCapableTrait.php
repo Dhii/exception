@@ -12,16 +12,16 @@ trait CreateInvalidArgumentExceptionCapableTrait
      *
      * @since [*next-version*]
      *
-     * @param string|Stringable|null $message  The error message, if any.
-     * @param int|null               $code     The error code, if any.
-     * @param RootException|null     $previous The inner exception for chaining, if any.
-     * @param mixed|null             $argument The invalid argument, if any.
+     * @param string             $message  The error message, if any.
+     * @param int                $code     The error code, if any.
+     * @param RootException|null $previous The inner exception for chaining, if any.
+     * @param mixed|null         $argument The invalid argument, if any.
      *
      * @return InvalidArgumentException The new exception.
      */
     protected function _createInvalidArgumentException(
-        $message = null,
-        $code = null,
+        $message = '',
+        $code = 0,
         RootException $previous = null,
         $argument = null
     ) {
