@@ -9,7 +9,7 @@ use Dhii\Util\String\StringableInterface as Stringable;
 use OutOfRangeException as BaseOutOfRangeException;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 
-class OutOfRangeException extends BaseOutOfRangeException implements BadSubjectExceptionInterface
+class OutOfRangeException extends BaseOutOfRangeException implements OutOfRangeExceptionInterface
 {
     /*
      * Adds argument awareness.
