@@ -9,6 +9,11 @@ use Dhii\Util\String\StringableInterface as Stringable;
 use OutOfRangeException as BaseOutOfRangeException;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 
+/**
+ * A standards-compliant Out of Range exception implementation.
+ *
+ * @since [*next-version*]
+ */
 class OutOfRangeException extends BaseOutOfRangeException implements OutOfRangeExceptionInterface
 {
     /*
