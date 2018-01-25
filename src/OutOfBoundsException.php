@@ -6,15 +6,15 @@ use Dhii\I18n\StringTranslatingTrait;
 use Dhii\Util\Normalization\NormalizeIntCapableTrait;
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
-use OutOfRangeException as BaseOutOfRangeException;
+use OutOfBoundsException as BaseOutOfBoundsException;
 use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 
 /**
- * A standards-compliant Out of Range exception implementation.
+ * A standards-compliant Out of Bounds exception implementation.
  *
  * @since [*next-version*]
  */
-class OutOfRangeException extends BaseOutOfRangeException implements OutOfRangeExceptionInterface
+class OutOfBoundsException extends BaseOutOfBoundsException implements OutOfBoundsExceptionInterface
 {
     /*
      * Adds argument awareness.
