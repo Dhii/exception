@@ -65,7 +65,7 @@ class OutOfRangeExceptionTest extends TestCase
         $argument = uniqid('argument-');
         $subject = $this->createInstance($message, $code, $previous, $argument);
 
-        $this->assertInstanceOf('Exception', $subject, 'Subject is not a valid exception');
+        $this->assertInstanceOf('OutOfRangeException', $subject, 'Subject is not a valid Out of Range exception');
         try {
             throw $subject;
         } catch (RootException $e) {
