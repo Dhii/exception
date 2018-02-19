@@ -4,45 +4,14 @@ namespace Dhii\Exception;
 
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
-use Dhii\Util\Normalization\NormalizeStringCapableTrait;
-use Dhii\Util\Normalization\NormalizeIntCapableTrait;
-use Dhii\I18n\StringTranslatingTrait;
 
 /**
  * The most basic exception.
  *
  * @since [*next-version*]
  */
-class Exception extends RootException implements ThrowableInterface
+class Exception extends AbstractBaseException
 {
-    /*
-     * Adds ability to normalize strings.
-     *
-     * @since [*next-version*]
-     */
-    use NormalizeStringCapableTrait;
-
-    /*
-     * Adds ability to normalize integers.
-     *
-     * @since [*next-version*]
-     */
-    use NormalizeIntCapableTrait;
-
-    /*
-     * Adds ability to translate strings.
-     *
-     * @since [*next-version*]
-     */
-    use StringTranslatingTrait;
-
-    /*
-     * Adds an invalid argument exception factory.
-     *
-     * @since [*next-version*]
-     */
-    use CreateNativeInvalidArgumentExceptionCapableTrait;
-
     /**
      * @since [*next-version*]
      *

@@ -2,12 +2,9 @@
 
 namespace Dhii\Exception;
 
-use Dhii\I18n\StringTranslatingTrait;
-use Dhii\Util\Normalization\NormalizeIntCapableTrait;
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
 use OutOfRangeException as BaseOutOfRangeException;
-use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 
 /**
  * A standards-compliant Out of Range exception implementation.
@@ -24,32 +21,11 @@ class OutOfRangeException extends BaseOutOfRangeException implements OutOfRangeE
     use SubjectAwareTrait;
 
     /*
-     * Adds ability to normalize strings.
+     * Functionality common to exceptions
      *
      * @since [*next-version*]
      */
-    use NormalizeStringCapableTrait;
-
-    /*
-     * Adds ability to normalize integers.
-     *
-     * @since [*next-version*]
-     */
-    use NormalizeIntCapableTrait;
-
-    /*
-     * Adds ability to translate strings.
-     *
-     * @since [*next-version*]
-     */
-    use StringTranslatingTrait;
-
-    /*
-     * Adds an invalid argument exception factory.
-     *
-     * @since [*next-version*]
-     */
-    use CreateNativeInvalidArgumentExceptionCapableTrait;
+    use ExceptionTrait;
 
     /**
      * @since [*next-version*]
