@@ -2,12 +2,9 @@
 
 namespace Dhii\Exception;
 
-use Dhii\I18n\StringTranslatingTrait;
-use Dhii\Util\Normalization\NormalizeIntCapableTrait;
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
 use OutOfBoundsException as BaseOutOfBoundsException;
-use Dhii\Util\Normalization\NormalizeStringCapableTrait;
 
 /**
  * A standards-compliant Out of Bounds exception implementation.
@@ -24,51 +21,23 @@ class OutOfBoundsException extends BaseOutOfBoundsException implements OutOfBoun
     use SubjectAwareTrait;
 
     /*
-     * Adds ability to normalize strings.
+     * Functionality common to exceptions
      *
      * @since [*next-version*]
      */
-    use NormalizeStringCapableTrait;
-
-    /*
-     * Adds ability to normalize integers.
-     *
-     * @since [*next-version*]
-     */
-    use NormalizeIntCapableTrait;
-
-    /*
-     * Adds ability to translate strings.
-     *
-     * @since [*next-version*]
-     */
-    use StringTranslatingTrait;
-
-    /*
-     * Adds an invalid argument exception factory.
-     *
-     * @since [*next-version*]
-     */
-    use CreateNativeInvalidArgumentExceptionCapableTrait;
+    use ExceptionTrait;
 
     /**
      * @since [*next-version*]
      *
-     * @param string|Stringable|null $message  The message, if any.
-     * @param int|null               $code     The error code, if any.
-     * @param RootException|null     $previous The inner exception, if any.
-     * @param mixed|null             $argument The argument value, if any.
+     * @param string|Stringable|int|float|bool|null $message  The message, if any.
+     * @param int|float|string|Stringable|null      $code     The numeric error code, if any.
+     * @param RootException|null                    $previous The inner exception, if any.
+     * @param mixed|null                            $argument The argument value, if any.
      */
     public function __construct($message = null, $code = null, RootException $previous = null, $argument = null)
     {
-        $message = is_null($message)
-            ? ''
-            : $this->_normalizeString($message);
-        $code = is_null($code)
-            ? 0
-            : $this->_normalizeInt($code);
-
-        parent::__construct($message, $code, $previous);
+        $this->_initBaseException($message, $code, $previous);
         $this->_setSubject($argument);
 
         $this->_construct();
@@ -93,5 +62,19 @@ class OutOfBoundsException extends BaseOutOfBoundsException implements OutOfBoun
     public function getSubject()
     {
         return $this->_getSubject();
+    }
+
+    /**
+     * Calls the parent constructor.
+     *
+     * @param string        $message  The error message.
+     * @param int           $code     The error code.
+     * @param RootException $previous The inner exception, if any.
+     *
+     * @since [*next-version*]
+     */
+    protected function _initParent($message = '', $code = 0, RootException $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
     }
 }

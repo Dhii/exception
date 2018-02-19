@@ -11,14 +11,14 @@ use Dhii\Exception\InvalidArgumentException as TestSubject;
  *
  * @since [*next-version*]
  */
-class OutOfBoundsExceptionTest extends TestCase
+class InitBaseExceptionCapableTraitTest extends TestCase
 {
     /**
      * The name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\OutOfBoundsException';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Exception\InitBaseExceptionCapableTrait';
 
     /**
      * Creates a new instance of the test subject.
@@ -37,7 +37,7 @@ class OutOfBoundsExceptionTest extends TestCase
             ->setMethods($methods)
             ->setConstructorArgs($constructorArgs)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMockForTrait();
 
         return $mock;
     }
@@ -82,57 +82,38 @@ class OutOfBoundsExceptionTest extends TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created.');
-        $this->assertInstanceOf('OutOfBoundsException', $subject, 'Subject is not a valid out of Bounds exception.');
-        $this->assertInstanceOf('Dhii\Exception\OutOfBoundsExceptionInterface', $subject, 'Subject does not implement required interface.');
+        $this->assertInternalType('object', $subject, 'A valid instance of the test subject could not be created.');
     }
 
     /**
-     * Tests that the constructor runs correctly.
+     * Tests that `_initBaseException()` works as expected.
      *
      * @since [*next-version*]
      */
-    public function testConstructor()
+    public function testInitBaseException()
     {
         $subject = $this->createInstance([
-            '_initBaseException',
-            '_construct',
-            '_setSubject',
+            '_normalizeString',
+            '_normalizeInt',
+            '_initParent',
         ]);
         $_subject = $this->reflect($subject);
         $message = uniqid('message-');
         $code = rand(1, 99);
-        $value = uniqid('out-of-range-value-');
         $previous = $this->createException(uniqid('previous-message'));
 
         $subject->expects($this->exactly(1))
-            ->method('_initBaseException')
+            ->method('_normalizeString')
+            ->with($message)
+            ->will($this->returnArgument(0));
+        $subject->expects($this->exactly(1))
+            ->method('_normalizeInt')
+            ->with($code)
+            ->will($this->returnArgument(0));
+        $subject->expects($this->exactly(1))
+            ->method('_initParent')
             ->with($message, $code, $previous);
-        $subject->expects($this->exactly(1))
-            ->method('_construct');
-        $subject->expects($this->exactly(1))
-            ->method('_setSubject')
-            ->with($value);
 
-        $subject->__construct($message, $code, $previous, $value);
-    }
-
-    /**
-     * Tests that the subject can have the exception subject retrieved correctly.
-     *
-     * @since [*next-version*]
-     */
-    public function testGetSubject()
-    {
-        $subject = $this->createInstance(['_getSubject']);
-        $_subject = $this->reflect($subject);
-        $arg = uniqid('subject-');
-
-        $subject->expects($this->exactly(1))
-            ->method('_getSubject')
-            ->will($this->returnValue($arg));
-
-        $result = $subject->getSubject();
-        $this->assertEquals($arg, $result, 'Subject did not retrieve required exception subject');
+        $subject->_initBaseException($message, $code, $previous);
     }
 }

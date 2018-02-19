@@ -95,8 +95,7 @@ class ExceptionTest extends TestCase
     public function testConstructor()
     {
         $subject = $this->createInstance([
-            '_normalizeString',
-            '_normalizeInt',
+            '_initBaseException',
             '_construct',
         ]);
         $_subject = $this->reflect($subject);
@@ -105,13 +104,10 @@ class ExceptionTest extends TestCase
         $previous = $this->createException(uniqid('previous-message'));
 
         $subject->expects($this->exactly(1))
+            ->method('_initBaseException')
+            ->with($message, $code, $previous);
+        $subject->expects($this->exactly(1))
             ->method('_construct');
-        $subject->expects($this->exactly(1))
-            ->method('_normalizeString')
-            ->with($message);
-        $subject->expects($this->exactly(1))
-            ->method('_normalizeInt')
-            ->with($code);
 
         $subject->__construct($message, $code, $previous);
     }

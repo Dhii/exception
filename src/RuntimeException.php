@@ -2,24 +2,17 @@
 
 namespace Dhii\Exception;
 
+use RuntimeException as RootRuntimeException;
 use Exception as RootException;
 use Dhii\Util\String\StringableInterface as Stringable;
-use OutOfRangeException as BaseOutOfRangeException;
 
 /**
- * A standards-compliant Out of Range exception implementation.
+ * Represents a problem with a function argument.
  *
  * @since [*next-version*]
  */
-class OutOfRangeException extends BaseOutOfRangeException implements OutOfRangeExceptionInterface
+class RuntimeException extends RootRuntimeException implements RuntimeExceptionInterface
 {
-    /*
-     * Adds argument awareness.
-     *
-     * @since [*next-version*]
-     */
-    use SubjectAwareTrait;
-
     /*
      * Functionality common to exceptions
      *
@@ -33,13 +26,10 @@ class OutOfRangeException extends BaseOutOfRangeException implements OutOfRangeE
      * @param string|Stringable|int|float|bool|null $message  The message, if any.
      * @param int|float|string|Stringable|null      $code     The numeric error code, if any.
      * @param RootException|null                    $previous The inner exception, if any.
-     * @param mixed|null                            $argument The argument value, if any.
      */
-    public function __construct($message = null, $code = null, RootException $previous = null, $argument = null)
+    public function __construct($message = null, $code = null, RootException $previous = null)
     {
         $this->_initBaseException($message, $code, $previous);
-        $this->_setSubject($argument);
-
         $this->_construct();
     }
 
@@ -52,16 +42,6 @@ class OutOfRangeException extends BaseOutOfRangeException implements OutOfRangeE
      */
     protected function _construct()
     {
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function getSubject()
-    {
-        return $this->_getSubject();
     }
 
     /**

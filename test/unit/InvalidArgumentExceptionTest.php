@@ -95,8 +95,7 @@ class InvalidArgumentExceptionTest extends TestCase
     public function testConstructor()
     {
         $subject = $this->createInstance([
-            '_normalizeString',
-            '_normalizeInt',
+            '_initBaseException',
             '_construct',
             '_setSubject',
         ]);
@@ -107,16 +106,13 @@ class InvalidArgumentExceptionTest extends TestCase
         $value = uniqid('invalid-argument-value-');
 
         $subject->expects($this->exactly(1))
-            ->method('_construct');
-        $subject->expects($this->exactly(1))
-            ->method('_normalizeString')
-            ->with($message);
-        $subject->expects($this->exactly(1))
-            ->method('_normalizeInt')
-            ->with($code);
+            ->method('_initBaseException')
+            ->with($message, $code, $previous);
         $subject->expects($this->exactly(1))
             ->method('_setSubject')
             ->with($value);
+        $subject->expects($this->exactly(1))
+            ->method('_construct');
 
         $subject->__construct($message, $code, $previous, $value);
     }
