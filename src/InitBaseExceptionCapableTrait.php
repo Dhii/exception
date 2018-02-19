@@ -17,8 +17,8 @@ trait InitBaseExceptionCapableTrait
      * @since [*next-version*]
      *
      * @param string|Stringable|int|float|bool|null $message  The message, if any.
-     * @param int|float|string|Stringable|null               $code     The error code, if any.
-     * @param RootException|null     $previous The inner exception, if any.
+     * @param int|float|string|Stringable|null      $code     The numeric error code, if any.
+     * @param RootException|null                    $previous The inner exception, if any.
      *
      * @throws InvalidArgumentException If the message or the code is invalid.
      */
@@ -37,8 +37,8 @@ trait InitBaseExceptionCapableTrait
     /**
      * Calls the parent constructor.
      *
-     * @param string $message The error message.
-     * @param int $code The error code.
+     * @param string        $message  The error message.
+     * @param int           $code     The error code.
      * @param RootException $previous The inner exception, if any.
      *
      * @since [*next-version*]
