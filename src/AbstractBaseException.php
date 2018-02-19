@@ -3,9 +3,6 @@
 namespace Dhii\Exception;
 
 use Exception as RootException;
-use Dhii\Util\Normalization\NormalizeStringCapableTrait;
-use Dhii\Util\Normalization\NormalizeIntCapableTrait;
-use Dhii\I18n\StringTranslatingTrait;
 
 abstract class AbstractBaseException extends RootException implements ThrowableInterface
 {
@@ -18,8 +15,8 @@ abstract class AbstractBaseException extends RootException implements ThrowableI
     /**
      * Calls the parent constructor.
      *
-     * @param string $message The error message.
-     * @param int $code The error code.
+     * @param string        $message  The error message.
+     * @param int           $code     The error code.
      * @param RootException $previous The inner exception, if any.
      *
      * @since [*next-version*]
