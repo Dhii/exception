@@ -14,6 +14,8 @@ use Dhii\Util\String\StringableInterface as Stringable;
 trait InitBaseExceptionCapableTrait
 {
     /**
+     * Initializes the base exception.
+     *
      * @since [*next-version*]
      *
      * @param string|Stringable|int|float|bool|null $message  The message, if any.
