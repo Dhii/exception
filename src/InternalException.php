@@ -24,10 +24,14 @@ class InternalException extends RootException implements InternalExceptionInterf
      *
      * @param string|Stringable|int|float|bool|null $message  The message, if any.
      * @param int|float|string|Stringable|null      $code     The numeric error code, if any.
-     * @param RootException|null                    $previous The inner exception, if any.
+     * @param RootException                         $previous The inner exception.
      */
     public function __construct($message = null, $code = null, RootException $previous = null)
     {
+        if (is_null($previous)) {
+            throw $this->_createInvalidArgumentException($this->__('Internal exceptions require an inner exception'));
+        }
+
         $this->_initBaseException($message, $code, $previous);
         $this->_construct();
     }
