@@ -1,6 +1,6 @@
 # Dhii - Exception
 
-[![Build Status](https://travis-ci.org/Dhii/exception.svg?branch=master)](https://travis-ci.org/Dhii/exception)
+[![Build Status](https://travis-ci.org/Dhii/exception.svg?branch=develop)](https://travis-ci.org/Dhii/exception)
 [![Code Climate](https://codeclimate.com/github/Dhii/exception/badges/gpa.svg)](https://codeclimate.com/github/Dhii/exception)
 [![Test Coverage](https://codeclimate.com/github/Dhii/exception/badges/coverage.svg)](https://codeclimate.com/github/Dhii/exception/coverage)
 [![Latest Stable Version](https://poser.pugx.org/dhii/exception/version)](https://packagist.org/packages/dhii/exception)
