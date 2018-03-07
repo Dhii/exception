@@ -2,9 +2,11 @@
 
 namespace Dhii\Exception\UnitTest;
 
+use InvalidArgumentException;
 use Xpmock\TestCase;
 use Exception as RootException;
 use Dhii\Exception\InternalException as TestSubject;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
  * Tests {@see TestSubject}.
@@ -28,7 +30,7 @@ class InternalExceptionTest extends TestCase
      * @param string[] $methods         The names of methods to make mockable.
      * @param mixed[]  $constructorArgs The arguments for the subject's constructor.
      *
-     * @return TestSubject
+     * @return MockObject|TestSubject
      */
     public function createInstance($methods = [], $constructorArgs = [])
     {
@@ -58,7 +60,7 @@ class InternalExceptionTest extends TestCase
     }
 
     /**
-     * Creates a new exception.
+     * Creates a new Invalid Argument exception.
      *
      * @since [*next-version*]
      *
@@ -66,11 +68,35 @@ class InternalExceptionTest extends TestCase
      * @param int                $code     The code.
      * @param RootException|null $previous The inner exception, if any.
      *
-     * @return RootException The new exception.
+     * @return MockObject|RootException The new exception.
      */
     public function createException($message = '', $code = 0, $previous = null)
     {
-        return new RootException($message, $code, $previous);
+        $mock = $this->getMockBuilder('Exception')
+            ->setConstructorArgs([$message, $code, $previous])
+            ->getMock();
+
+        return $mock;
+    }
+
+    /**
+     * Creates a new Invalid Argument exception.
+     *
+     * @since [*next-version*]
+     *
+     * @param string             $message  The message.
+     * @param int                $code     The code.
+     * @param RootException|null $previous The inner exception, if any.
+     *
+     * @return MockObject|InvalidArgumentException The new exception.
+     */
+    public function createInvalidArgumentException($message = '', $code = 0, $previous = null)
+    {
+        $mock = $this->getMockBuilder('InvalidArgumentException')
+            ->setConstructorArgs([$message, $code, $previous])
+            ->getMock();
+
+        return $mock;
     }
 
     /**
@@ -109,6 +135,30 @@ class InternalExceptionTest extends TestCase
         $subject->expects($this->exactly(1))
             ->method('_construct');
 
+        $subject->__construct($message, $code, $previous);
+    }
+
+    /**
+     * Tests that the constructor fails correctly when not given an inner exception.
+     *
+     * @since [*next-version*]
+     */
+    public function testConstructorFailurePreviousRequired()
+    {
+        $subject = $this->createInstance([
+            '_createInvalidArgumentException',
+        ]);
+        $_subject = $this->reflect($subject);
+        $message = uniqid('message-');
+        $code = rand(1, 99);
+        $previous = null;
+        $exception = $this->createInvalidArgumentException('Previous is required');
+
+        $subject->expects($this->exactly(1))
+            ->method('_createInvalidArgumentException')
+            ->will($this->returnValue($exception));
+
+        $this->setExpectedException('InvalidArgumentException');
         $subject->__construct($message, $code, $previous);
     }
 }
