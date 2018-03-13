@@ -3,7 +3,7 @@
 namespace Dhii\Exception;
 
 use Exception as RootException;
-use InvalidArgumentException;
+use InvalidArgumentException as BaseInvalidArgumentException;
 use Dhii\Util\String\StringableInterface as Stringable;
 
 /**
@@ -22,7 +22,7 @@ trait InitBaseExceptionCapableTrait
      * @param int|float|string|Stringable|null      $code     The numeric error code, if any.
      * @param RootException|null                    $previous The inner exception, if any.
      *
-     * @throws InvalidArgumentException If the message or the code is invalid.
+     * @throws BaseInvalidArgumentException If the message or the code is invalid.
      */
     public function _initBaseException($message = null, $code = null, RootException $previous = null)
     {
@@ -57,7 +57,7 @@ trait InitBaseExceptionCapableTrait
      *
      * @param Stringable|string|int|float|bool $subject The value to normalize to string.
      *
-     * @throws InvalidArgumentException If the value cannot be normalized.
+     * @throws BaseInvalidArgumentException If the value cannot be normalized.
      *
      * @return string The string that resulted from normalization.
      */
@@ -73,7 +73,7 @@ trait InitBaseExceptionCapableTrait
      *
      * @param string|Stringable|float|int $value The value to normalize.
      *
-     * @throws InvalidArgumentException If value cannot be normalized.
+     * @throws BaseInvalidArgumentException If value cannot be normalized.
      *
      * @return int The normalized value.
      */
