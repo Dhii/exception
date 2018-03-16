@@ -11,11 +11,11 @@ use Dhii\I18n\StringTranslatingTrait;
  */
 trait ExceptionTrait
 {
-    /* Adds ability to normalize strings.
+    /* Adds ability to initialize the exception base.
      *
      * @since [*next-version*]
      */
-    use NormalizeStringCapableTrait;
+    use InitBaseExceptionCapableTrait;
 
     /* Adds ability to normalize integers.
      *
@@ -23,11 +23,11 @@ trait ExceptionTrait
      */
     use NormalizeIntCapableTrait;
 
-    /* Adds ability to translate strings.
+    /* Adds ability to normalize strings.
      *
      * @since [*next-version*]
      */
-    use StringTranslatingTrait;
+    use NormalizeStringCapableTrait;
 
     /* Adds an invalid argument exception factory.
      *
@@ -35,9 +35,9 @@ trait ExceptionTrait
      */
     use CreateNativeInvalidArgumentExceptionCapableTrait;
 
-    /* Adds ability to initialize the exception base.
+    /* Adds ability to translate strings.
      *
      * @since [*next-version*]
      */
-    use InitBaseExceptionCapableTrait;
+    use StringTranslatingTrait;
 }
