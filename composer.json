@@ -24,6 +24,9 @@
         "codeclimate/php-test-reporter": "<=0.3.2",
         "dhii/stringable-interface": "^0.1"
     },
+    "replace": {
+        "dhii/exception-helper-base": "0.1-alpha1|0.1-alpha2"
+    },
     "autoload": {
         "psr-4": {
             "Dhii\\Exception\\": "src"

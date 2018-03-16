@@ -8,12 +8,9 @@
       <path value="$PROJECT_DIR$/vendor/codeclimate/php-test-reporter" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
-      <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
@@ -40,8 +37,11 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/friendsofphp/php-cs-fixer" />
       <path value="$PROJECT_DIR$/vendor/dhii/normalization-helper-base" />
-      <path value="$PROJECT_DIR$/vendor/dhii/i18n-interface" />
       <path value="$PROJECT_DIR$/vendor/dhii/i18n-helper-base" />
+      <path value="$PROJECT_DIR$/vendor/dhii/i18n-interface" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
