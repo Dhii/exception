@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [[*next-version*]] - YYYY-MM-DD
+
+## [0.1-alpha3] - 2018-03-16
 ### Fixed
 - `ExceptionTrait` triggered a fatal error in PHP 5.4.0 due to the order of its traits.
 
