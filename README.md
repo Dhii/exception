@@ -12,7 +12,10 @@ Standards-compliant exception classes.
 This package contains concrete implementations of classes that implement
 interfaces in [`dhii/exception-interface`]. This provides developers with
 ready-made, standards-compliant classes that can be safely instantiated and
-`throw`n to signal the various errors.
+`throw`n to signal the various errors. The concrete exceptions will usually
+have a corresponding factory trait, and the factory methods of those traits
+are the recommended way of creating new exception instances (after service
+definition, of course).
 
 Implementations in this package also have the following features aimed
 to become more standards-compliant:
