@@ -26,7 +26,7 @@ not `null`).
 
 Consumers, i.e. code that attempts to `catch`, should not depend on these
 classes. Instead, consumers should depend on the interfaces of
-`dhii/exception-interface`.
+[`dhii/exception-interface`][].
 
 
 [Dhii]:                                             https://github.com/Dhii/dhii
