@@ -23,7 +23,7 @@ trait CreateInternalExceptionCapableTrait
      *
      * @return InternalException The new exception.
      */
-    protected function _createInternalException($message = null, $code = null, $previous = null)
+    protected function _createInternalException($message = null, $code = null, RootException $previous = null)
     {
         return new InternalException($message, $code, $previous);
     }
