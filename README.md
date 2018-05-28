@@ -45,7 +45,7 @@ achieved by calling `_initBaseException()` in the constructor, after which custo
 [Dhii]:                                             https://github.com/Dhii/dhii
 [stringable]:                                       https://github.com/Dhii/stringable-interface
 
-[`dhii/exception-interface`]:                       https://github.com/Dhii/exception-interface
+[`dhii/exception-interface`]:                       https://packagist.org/packages/dhii/exception-interface
 [`dhii/action-interface`]:                          https://packagist.org/packages/dhii/action-interface
 
 [`Exception`]:                                      http://php.net/manual/en/class.exception.php
